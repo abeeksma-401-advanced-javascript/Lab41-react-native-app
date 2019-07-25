@@ -3,17 +3,23 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import MapView from 'react-native-maps';
 
 export default () => {
-  return (
 
+  let initialState = {
+    latitude: -91.665623,
+    longitude: 41.977880,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+    }
+
+  const [location, setLocation] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState(initialState);
+  const [hasPermission, setHasPermission] = useState(null);
+
+
+  return (
     <MapView 
     style={{flex: 1}}     
-    
-    initialRegion={{
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }}
+    region={location}
     />
 
   )
